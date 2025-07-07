@@ -24,7 +24,7 @@ const useToast = () => {
         <div
           key={toast.id}
           className={`px-4 py-2 rounded-lg shadow-lg text-white text-sm animate-fade-in ${
-            toast.type === 'error' ? 'bg-red-600' : 'bg-green-600'
+            toast.type === 'error' ? 'bg-destructive' : 'bg-green-600'
           }`}
         >
           {toast.message}
@@ -203,7 +203,7 @@ const AIMessageBar = () => {
         <div
           className={`
             absolute bottom-16 right-0 mb-2 w-[calc(100vw-2rem)] max-w-xl sm:w-96 md:w-[28rem] h-[600px] 
-            bg-gradient-to-br from-slate-900 to-indigo-950 rounded-xl overflow-hidden shadow-2xl border border-indigo-500/20
+            bg-gray-900 rounded-xl overflow-hidden shadow-2xl border border-gray-700
             transform transition-all duration-300 ease-out origin-bottom-right
             ${isOpen 
               ? 'opacity-100 scale-100 translate-y-0' 
@@ -212,17 +212,17 @@ const AIMessageBar = () => {
           `}
         >
           {/* Header */}
-          <div className="bg-indigo-600/30 backdrop-blur-sm p-4 border-b border-indigo-500/30 flex justify-between items-center">
+          <div className="bg-gray-800/50 backdrop-blur-sm p-4 border-b border-gray-700 flex justify-between items-center">
             <div className="flex items-center space-x-2">
-              <Sparkles className="text-indigo-300 h-5 w-5" />
+              <Sparkles className="text-blue-400 h-5 w-5" />
               <h2 className="text-white font-medium">AI Assistant</h2>
               {status === 'streaming' && (
-                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
               )}
             </div>
             <button 
               onClick={clearChat}
-              className="text-indigo-200 hover:text-white transition-colors"
+              className="text-gray-400 hover:text-white transition-colors"
               title="Clear conversation"
             >
               <X className="h-4 w-4" />
@@ -230,16 +230,16 @@ const AIMessageBar = () => {
           </div>
           
           {/* Messages container */}
-          <div className="p-4 h-[calc(100%-132px)] overflow-y-auto bg-slate-900/50 scroll-smooth">
+          <div className="p-4 h-[calc(100%-132px)] overflow-y-auto bg-gray-800/80 scroll-smooth">
             {messages.length === 0 ? (
               <div className="flex flex-col items-center justify-center h-full text-center">
-                <Sparkles className="h-12 w-12 text-indigo-400 mb-4" />
-                <h3 className="text-indigo-200 text-xl mb-2">How can I help you today?</h3>
-                <p className="text-slate-400 text-sm max-w-xs mb-4">
+                <Sparkles className="h-12 w-12 text-blue-400 mb-4" />
+                <h3 className="text-white text-xl mb-2">How can I help you today?</h3>
+                <p className="text-gray-300 text-sm max-w-xs mb-4">
                   Ask me anything about AriesBerriesCompany and our innovations!
                 </p>
-                <div className="text-xs text-slate-500">
-                  💡 Tip: Press <kbd className="px-1 py-0.5 bg-slate-700 rounded text-slate-300">Ctrl+K</kbd> to open chat
+                <div className="text-xs text-gray-400">
+                  💡 Tip: Press <kbd className="px-1 py-0.5 bg-gray-700 rounded text-gray-300">Ctrl+K</kbd> to open chat
                 </div>
               </div>
             ) : (
@@ -252,8 +252,8 @@ const AIMessageBar = () => {
                     <div
                       className={`max-w-[85%] p-3 rounded-2xl ${
                         message.role === 'user'
-                          ? "bg-indigo-600 text-white rounded-tr-none shadow-lg"
-                          : "bg-slate-700/60 text-slate-100 rounded-tl-none border border-slate-600/50 shadow-sm"
+                          ? "bg-blue-600 text-white rounded-tr-none shadow-lg"
+                          : "bg-gray-700/80 text-gray-100 rounded-tl-none border border-gray-600 shadow-sm"
                       } animate-fade-in break-words`}
                     >
                       <div className="text-sm leading-relaxed">
@@ -272,12 +272,12 @@ const AIMessageBar = () => {
                 {/* Loading indicator */}
                 {status === 'streaming' && (
                   <div className="flex justify-start">
-                    <div className="max-w-[85%] p-3 rounded-2xl bg-slate-700/60 text-slate-100 rounded-tl-none border border-slate-600/50">
+                    <div className="max-w-[85%] p-3 rounded-2xl bg-gray-700/80 text-gray-100 rounded-tl-none border border-gray-600">
                       <div className="flex items-center space-x-2">
-                        <div className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></div>
-                        <div className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse delay-75"></div>
-                        <div className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse delay-150"></div>
-                        <span className="text-xs text-slate-400 ml-2">AI is thinking...</span>
+                        <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></div>
+                        <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse delay-75"></div>
+                        <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse delay-150"></div>
+                        <span className="text-xs text-gray-300 ml-2">AI is thinking...</span>
                       </div>
                     </div>
                   </div>
@@ -286,15 +286,15 @@ const AIMessageBar = () => {
                 {/* Error state with retry option */}
                 {error && (
                   <div className="flex justify-center">
-                    <div className="bg-red-900/20 border border-red-500/30 rounded-lg p-3 max-w-[85%]">
-                      <div className="flex items-center space-x-2 text-red-300">
+                    <div className="bg-destructive/10 border border-destructive/30 rounded-lg p-3 max-w-[85%]">
+                      <div className="flex items-center space-x-2 text-destructive">
                         <AlertCircle className="h-4 w-4 flex-shrink-0" />
                         <span className="text-sm">Failed to get response</span>
                       </div>
                       <button
                         onClick={handleRetry}
                         disabled={isRetrying || status === 'streaming'}
-                        className="mt-2 flex items-center space-x-1 text-xs text-red-200 hover:text-white transition-colors disabled:opacity-50"
+                        className="mt-2 flex items-center space-x-1 text-xs text-destructive hover:text-destructive-foreground transition-colors disabled:opacity-50"
                       >
                         <RefreshCw className={`h-3 w-3 ${isRetrying ? 'animate-spin' : ''}`} />
                         <span>{isRetrying ? 'Retrying...' : 'Try again'}</span>
@@ -311,7 +311,7 @@ const AIMessageBar = () => {
           {/* Input form */}
           <form 
             onSubmit={onSubmit}
-            className={`p-4 border-t ${isFocused ? 'border-indigo-500/70 bg-slate-800/80' : 'border-slate-700/50 bg-slate-800/30'} transition-colors duration-200`}
+            className={`p-4 border-t ${isFocused ? 'border-blue-500 bg-gray-800/90' : 'border-gray-700 bg-gray-800/60'} transition-colors duration-200`}
           >
             <div className="relative flex items-center">
               <input
@@ -322,7 +322,7 @@ const AIMessageBar = () => {
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
                 placeholder={status === 'streaming' ? "AI is responding..." : "Type your message..."}
-                className="w-full bg-slate-700/50 border border-slate-600/50 rounded-full py-3 pl-4 pr-20 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/70 transition-all duration-200"
+                className="w-full bg-gray-700 border border-gray-600 rounded-full py-3 pl-4 pr-20 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
                 disabled={status === 'streaming'}
                 maxLength={4000}
                 autoComplete="off"
@@ -330,7 +330,7 @@ const AIMessageBar = () => {
               
               {/* Character counter for long messages */}
               {input.length > 3500 && (
-                <div className={`absolute right-16 text-xs ${input.length > 3900 ? 'text-red-400' : 'text-slate-400'}`}>
+                <div className={`absolute right-16 text-xs ${input.length > 3900 ? 'text-red-400' : 'text-gray-400'}`}>
                   {input.length}/4000
                 </div>
               )}
@@ -352,8 +352,8 @@ const AIMessageBar = () => {
                 disabled={input.trim() === "" || status === 'streaming'}
                 className={`absolute right-1 rounded-full p-2 transition-all duration-200 ${
                   input.trim() === "" || status === 'streaming'
-                    ? "text-slate-500 bg-slate-700/50 cursor-not-allowed"
-                    : "text-white bg-indigo-600 hover:bg-indigo-500 hover:scale-105 active:scale-95"
+                    ? "text-gray-500 bg-gray-700 cursor-not-allowed"
+                    : "text-white bg-blue-600 hover:bg-blue-500 hover:scale-105 active:scale-95"
                 }`}
                 title={status === 'streaming' ? "AI is responding..." : "Send message (Enter)"}
               >
@@ -366,7 +366,7 @@ const AIMessageBar = () => {
             </div>
             
             {/* Helpful tips and status */}
-            <div className="mt-2 flex justify-between items-center text-xs text-slate-400">
+            <div className="mt-2 flex justify-between items-center text-xs text-gray-400">
               {messages.length === 0 ? (
                 <span>Ask about our projects, innovations, or company philosophy</span>
               ) : (
@@ -382,10 +382,10 @@ const AIMessageBar = () => {
         <button
           onClick={() => setIsOpen(!isOpen)}
           className={`
-            w-12 h-12 rounded-full bg-gradient-to-br from-indigo-600 to-purple-600 backdrop-blur-md border border-indigo-500/20 shadow-xl
-            flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95
+            w-12 h-12 rounded-full bg-blue-600 backdrop-blur-md border border-blue-500/30 shadow-xl
+            flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 hover:bg-blue-500
             ${isOpen ? 'rotate-180' : 'rotate-0'}
-            ${status === 'streaming' ? 'ring-2 ring-green-400 ring-opacity-75' : ''}
+            ${status === 'streaming' ? 'ring-2 ring-green-500 ring-opacity-75' : ''}
           `}
           aria-label="Toggle AI Assistant"
           title="AI Assistant (Ctrl+K)"
