@@ -187,10 +187,11 @@ const AIMessageBar = () => {
 
   // Format message content to handle line breaks properly
   const formatMessageContent = useCallback((content: string) => {
-    return content.split('\n').map((line, index) => (
+    const lines = content.split('\n');
+    return lines.map((line, index) => (
       <React.Fragment key={index}>
         {line}
-        {index < content.split('\n').length - 1 && <br />}
+        {index < lines.length - 1 && <br />}
       </React.Fragment>
     ));
   }, []);
