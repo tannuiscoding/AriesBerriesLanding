@@ -19,17 +19,18 @@ const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
 const RATE_LIMIT_MAX_REQUESTS = 10; // 10 requests per minute
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
 
-// Cleanup old rate limit entries periodically
-setInterval(() => {
+// Cleanup old rate limit entries during each request
+function cleanupRateLimitMap() {
   const now = Date.now();
   for (const [key, value] of rateLimitMap.entries()) {
     if (now > value.resetTime) {
       rateLimitMap.delete(key);
     }
   }
-}, 5 * 60 * 1000); // Cleanup every 5 minutes
+}
 
 function checkRateLimit(ip: string): boolean {
+  cleanupRateLimitMap(); // Ensure stale entries are removed
   const now = Date.now();
   const current = rateLimitMap.get(ip);
   
