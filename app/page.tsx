@@ -5,6 +5,7 @@ import Contact from "@/components/Contact"
 import Footer from "@/components/Footer"
 import Header from "@/components/Header"
 import Hero from "@/components/Hero"
+import AIMessageBar from "@/components/ui/ai-assistat"
 
 export default function HomePage() {
   return (
@@ -26,6 +27,9 @@ export default function HomePage() {
 
       {/* Contact Section */}
       <Contact />
+
+      {/* AI Assistant */}
+      <AIMessageBar />
 
       {/* Footer */}
       <Footer />
