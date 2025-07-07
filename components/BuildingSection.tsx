@@ -88,7 +88,7 @@ const Building = () => {
               }`}
             >
               <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                "The Future is Limited Only by Imagination"
+                The Future is Limited Only by Imagination
               </h2>
               <p className="text-base md:text-lg lg:text-xl text-gray-300 leading-relaxed max-w-4xl mx-auto">
                 At AriesBerriesCompany, we believe in building human-centric AI that amplifies human potential rather
@@ -152,7 +152,7 @@ const Building = () => {
         <div className="container px-4 md:px-6 mx-auto max-w-7xl">
           <div className="max-w-5xl mx-auto text-center space-y-12">
             <div
-              className={`space-y-6 transition-all duration-700 delay-[1200ms] ${
+              className={`space-y-6 transition-all duration-700 delay-1000 ${
                 cardsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
             >

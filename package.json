@@ -9,6 +9,10 @@
     "start": "next start"
   },
   "dependencies": {
+    "@21st-extension/react": "^0.5.12",
+    "@21st-extension/toolbar-next": "^0.5.12",
+    "@ai-sdk/google": "^1.2.22",
+    "@ai-sdk/react": "^1.2.12",
     "@hookform/resolvers": "^3.9.1",
     "@radix-ui/react-accordion": "latest",
     "@radix-ui/react-alert-dialog": "latest",
@@ -37,6 +41,7 @@
     "@radix-ui/react-toggle": "latest",
     "@radix-ui/react-toggle-group": "latest",
     "@radix-ui/react-tooltip": "latest",
+    "ai": "^4.3.16",
     "autoprefixer": "^10.4.20",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
