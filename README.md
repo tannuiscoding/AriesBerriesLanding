@@ -77,6 +77,24 @@ yarn dev
 
 Visit [http://localhost:3000](http://localhost:3000) to view the site.
 
+## Docker Deployment
+
+Run the following commands to build and deploy the Docker container:
+
+To create a Docker image, ensure you have a `Dockerfile` in the root of your project with the following content:
+
+- To create the Docker image, run:
+```bash
+docker build -t ariesberries-site .
+```
+
+
+- To run the docker container, use:
+```bash
+docker run -p 3000:3000 --env-file .env ariesberries-site
+```
+
+
 ---
 
 ## 🛠️ Customization
